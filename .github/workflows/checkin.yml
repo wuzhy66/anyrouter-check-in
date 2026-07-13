@@ -63,7 +63,7 @@ jobs:
 
     - name: 安装 CloakBrowser
       run: |
-        xvfb-run -a --server-args="-screen 0 1920x1080x24" uv run python -m cloakbrowser install
+        xvfb-run -a --server-args="-screen 0 1920x1080x24" .venv/bin/python -m cloakbrowser install
         echo "✅ CloakBrowser 安装完成"
 
     - name: 恢复余额历史缓存
