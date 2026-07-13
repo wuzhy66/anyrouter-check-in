@@ -41,6 +41,9 @@ jobs:
     - name: 安装依赖
       run: |
         uv sync --frozen
+        # 0.3.31 在当前 GitHub Linux Runner 的安装自检阶段触发 SIGSEGV (exit 139)。
+        # 固定使用已验证的新版包装器，避免随 PyPI 最新版漂移。
+        uv pip install --upgrade "cloakbrowser==0.4.10"
         echo "✅ 环境初始化完成"
 
     - name: 安装系统依赖
