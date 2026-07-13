@@ -117,6 +117,8 @@ jobs:
         BARK_KEY: ${{ secrets.BARK_KEY }}
         BARK_SERVER: ${{ secrets.BARK_SERVER }}
       run: |
+        # 兼容初始 Secret 中遗留的邮箱域名拼写；Secret 更新后可删除此行。
+        export ANYROUTER_ACCOUNTS="$(printf '%s' "$ANYROUTER_ACCOUNTS" | sed 's/@alumni\.sysuu\.edu\.cn/@alumni.sysu.edu.cn/g')"
         xvfb-run -a --server-args="-screen 0 1920x1080x24" .venv/bin/python checkin.py
 
     - name: 上传调试截图
